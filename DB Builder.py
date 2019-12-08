@@ -1,16 +1,16 @@
 import math
+from datetime import datetime
 
-from sqlalchemy import create_engine, or_, and_, not_, desc, func, distinct, cast, Integer, Numeric, text
-from sqlalchemy.orm import Session
-
-from dispatch_order import dispatch_order
-from sqlalchemy_tutorial_step_0 import setup_step_0, Customer, Order, OrderLine, Item
-
+from sqlalchemy import create_engine, or_, and_, not_, desc, func, distinct, cast, Integer, Numeric, text, Column, \
+    String, DateTime, SmallInteger, CheckConstraint, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import Session, relationship
 
 base = declarative_base()
+engine = create_engine("sqlite:////web/Database/sql-AL_tutorial.db")
 base.metadata.create_all(engine)
 session = Session(bind=engine)
-engine = create_engine("sqlite:////web/Database/sqlalchemy_tutorial.db")
+
 
 
 # Classes
@@ -76,6 +76,8 @@ class OrderLine(base):
 		
 		
 # Start of tutorial
+
+
 
 
 
