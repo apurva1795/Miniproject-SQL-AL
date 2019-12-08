@@ -359,3 +359,11 @@ session.query(Item).filter(
 ).delete(synchronize_session='fetch')
 session.commit()
 
+from sqlalchemy import text
+
+session.query(Customer).filter(text("first_name = 'John'")).all()
+
+session.query(Customer).filter(text("town like 'Nor%'")).all()
+
+session.query(Customer).filter(text("town like 'Nor%'")).order_by(text("first_name, id desc")).all()
+
